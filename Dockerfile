@@ -6,6 +6,6 @@ ENV XDG_CACHE_HOME=/tmp/.chromium
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm i 
+RUN npm ci
 COPY . . 
 CMD ["npm", "start"]
