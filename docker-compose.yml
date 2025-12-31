@@ -1,12 +1,14 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  puppeteer:
-    image: hello-world
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
-    #restart: unless-stopped # Garante que o contêiner reinicie se parar inesperadamente
-    #ports:
-    #  - '4000:4000' # A porta padrão do n8n para acesso via navegador
-    #environment:
+  puppeteer-app:
+    container_name: puppeteer-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      XDG_CONFIG_HOME: /tmp/.chromium
+      XDG_CACHE_HOME: /tmp/.chromium
+    working_dir: /usr/src/app
+    command: npm start
+    restart: unless-stopped
