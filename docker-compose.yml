@@ -10,5 +10,7 @@ services:
       XDG_CONFIG_HOME: /tmp/.chromium
       XDG_CACHE_HOME: /tmp/.chromium
     working_dir: /usr/src/app
+    ports:
+      - "4000:4000"
     command: npm start
     restart: unless-stopped
