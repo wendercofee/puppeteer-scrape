@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  puppeteer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped # Garante que o contêiner reinicie se parar inesperadamente
+    ports:
+      - '4000:4000' # A porta padrão do n8n para acesso via navegador
+    environment:
