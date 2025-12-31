@@ -1,11 +1,11 @@
-FROM ghcr.io/puppeteer/puppeteer:19.7.2
+FROM ghcr.io/puppeteer/puppeteer:latest
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
+ENV XDG_CONFIG_HOME=/tmp/.chromium
+ENV XDG_CACHE_HOME=/tmp/.chromium
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm ci 
+RUN npm i 
 COPY . . 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
